@@ -9,7 +9,7 @@ const main = async () => {
     await orm.em.persistAndFlush(post);
     console.log("----------sql2----------");
     await orm.em.nativeInsert(Post, {title: 'my first post'});
-}
+};
 
 main().catch((err) => {
     console.error(err);
