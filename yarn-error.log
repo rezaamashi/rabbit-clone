@@ -1,0 +1,55 @@
+Arguments: 
+  /home/reza/.config/nvm/14.8.0/bin/node /home/reza/.config/nvm/14.8.0/bin/yarn add -d @types/node typescript,
+
+PATH: 
+  /home/reza/.config/nvm/14.8.0/bin:/home/reza/.vscode-server/bin/3dd905126b34dcd4de81fa624eb3a8cbe7485f13/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/Lenovo/AppData/Local/Programs/Python/Python38-32/Scripts/:/mnt/c/Users/Lenovo/AppData/Local/Programs/Python/Python38-32/:/mnt/c/Users/Lenovo/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Lenovo/AppData/Local/Programs/Microsoft VS Code/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  14.8.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/typescript,: Not found
+      at Request.params.callback [as _callback] (/home/reza/.config/nvm/14.8.0/lib/node_modules/yarn/lib/cli.js:66987:18)
+      at Request.self.callback (/home/reza/.config/nvm/14.8.0/lib/node_modules/yarn/lib/cli.js:140748:22)
+      at Request.emit (events.js:314:20)
+      at Request.<anonymous> (/home/reza/.config/nvm/14.8.0/lib/node_modules/yarn/lib/cli.js:141720:10)
+      at Request.emit (events.js:314:20)
+      at IncomingMessage.<anonymous> (/home/reza/.config/nvm/14.8.0/lib/node_modules/yarn/lib/cli.js:141642:12)
+      at Object.onceWrapper (events.js:420:28)
+      at IncomingMessage.emit (events.js:326:22)
+      at endReadableNT (_stream_readable.js:1244:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
+
+npm manifest: 
+  {
+    "name": "rabbit",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/rezaamashi/rabbit-clone.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/rezaamashi/rabbit-clone/issues"
+    },
+    "homepage": "https://github.com/rezaamashi/rabbit-clone#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
