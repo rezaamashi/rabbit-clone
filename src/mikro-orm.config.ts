@@ -8,6 +8,8 @@ export default {
         path: path.join(__dirname, "./migrations"),
         pattern: /^[\w-]+\d+\.[tj]s$/,
     },
+    user: "postgres",
+    password: "postgres",
     entities: [Post],
     dbName: "rebbit",
     type: "postgresql",

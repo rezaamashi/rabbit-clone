@@ -11,6 +11,8 @@ exports.default = {
         path: path_1.default.join(__dirname, "./migrations"),
         pattern: /^[\w-]+\d+\.[tj]s$/,
     },
+    user: "postgres",
+    password: "postgres",
     entities: [Post_1.Post],
     dbName: "rebbit",
     type: "postgresql",
