@@ -1,4 +1,5 @@
 import { Post } from "./entities/Post";
+import { User } from "./entities/User";
 import { __prod__ } from "./constants";
 import { MikroORM } from "@mikro-orm/core";
 import path from 'path';
@@ -10,7 +11,7 @@ export default {
     },
     user: "postgres",
     password: "postgres",
-    entities: [Post],
+  entities: [Post, User],
     dbName: "rebbit",
     type: "postgresql",
     debug: !__prod__,
