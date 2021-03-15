@@ -1,6 +1,15 @@
-import { Resolver, Query, Ctx, Arg, Mutation, Field, InputType, ObjectType } from 'type-graphql';
-import { MyContext } from '../types';
-import { User } from 'src/entities/User';
+import {
+  Resolver,
+  Query,
+  Ctx,
+  Arg,
+  Mutation,
+  Field,
+  InputType,
+  ObjectType,
+} from "type-graphql";
+import { MyContext } from "../types";
+import { User } from "src/entities/User";
 import argon2 from "argon2";
 
 @InputType()
@@ -12,7 +21,7 @@ class UsernamePasswordInput {
 }
 
 @ObjectType()
-class FieldError{
+class FieldError {
   @Field()
   field: string;
   @Field()
@@ -21,91 +30,90 @@ class FieldError{
 
 @ObjectType()
 class UserResponse {
-  @Field(() => [FieldError], {nullable: true}) 
+  @Field(() => [FieldError], { nullable: true })
   errors?: FieldError[];
 
-  @Field(() => User, {nullable: true})
+  @Field(() => User, { nullable: true })
   user?: User;
 }
 
-
-@Resolver ()
+@Resolver()
 export class UserResolver {
-    @Mutation(() => UserResponse)
+  @Mutation(() => UserResponse)
   async register(
     @Arg("options", () => UsernamePasswordInput) options: UsernamePasswordInput,
     @Ctx() { em }: MyContext
   ): Promise<UserResponse> {
     if (options.username.length <= 2) {
       return {
-	errors: [
-	  {
-	  field: "username",
-	  message: "Length must be greater thatn 2",
-	  },
-	],
+        errors: [
+          {
+            field: "username",
+            message: "Length must be greater thatn 2",
+          },
+        ],
       };
     }
 
     if (options.password.length <= 2) {
       return {
-	errors: [
-	  {
-	  field: "password",
-	  message: "Length must be greater thatn 2",
-	  },
-	],
+        errors: [
+          {
+            field: "password",
+            message: "Length must be greater thatn 2",
+          },
+        ],
       };
     }
 
-    const hashedPassword = await argon2.hash(options.password)
+    const hashedPassword = await argon2.hash(options.password);
     const user = em.create(User, {
       username: options.username,
       password: hashedPassword,
     });
     try {
-    await em.persistAndFlush(user);
-    } catch(err) {
+      await em.persistAndFlush(user);
+    } catch (err) {
       // duplicate username message
-      if (err.code === '23505' || err.detail.includes("already exists")) {
-	return {
-	  errors: [
-	    {
-	    field: "username",
-	      message: "username already taken",
-	    },
-	  ],
-	};
+      if (err.code === "23505" || err.detail.includes("already exists")) {
+        return {
+          errors: [
+            {
+              field: "username",
+              message: "username already taken",
+            },
+          ],
+        };
       }
     }
     return { user };
   }
-    
-    @Mutation(() => UserResponse)
+
+  @Mutation(() => UserResponse)
   async login(
     @Arg("options") options: UsernamePasswordInput,
     @Ctx() { em }: MyContext
   ): Promise<UserResponse> {
-    const user = await em.findOne(User, {username: options.username});
+    const user = await em.findOne(User, { username: options.username });
     if (!user) {
       return {
-	errors: [
-	  {
-	  field: "username",
-	  message: "that username doesn't exist",
-	  },
-	],
+        errors: [
+          {
+            field: "username",
+            message: "that username doesn't exist",
+          },
+        ],
       };
     }
-    const valid = await argon2.verify(user.password, options.password)
+    const valid = await argon2.verify(user.password, options.password);
     if (!valid) {
       return {
-	errors: [
-	  {
-	  field: "password",
-	  message: "incorrect password",
-	  },
-	],
+        errors: [
+          {
+            field: "password",
+            message: "incorrect password",
+          },
+        ],
       };
     }
     return {
