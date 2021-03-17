@@ -85,7 +85,7 @@ let UserResolver = class UserResolver {
                     errors: [
                         {
                             field: "password",
-                            message: "Length must be greater thatn 2",
+                            message: "Length must be greater that 2",
                         },
                     ],
                 };

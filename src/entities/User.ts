@@ -9,7 +9,7 @@ export class User {
   id!: number;
 
   @Field(() => String)
-  @Property({ type: "date"})
+  @Property({ type: "date" })
   createdAt = new Date();
 
   @Field(() => String)
