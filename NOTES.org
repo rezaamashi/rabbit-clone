@@ -1,8 +1,12 @@
 #+title: Log files to notes personal errors
 #+author: Reza A'masyi
 
-*  updatePost
-updatePost command still splits error in typegraphql
+* Problems
 
-* argon2
+** argon2
 [[file:src/index.ts::import { UserResolver } from "./resolvers/user";][UserResolver]] unable to load module argon2 
+* Fixed
+** updatePost
+updatePost command still splits error in typegraphql
+*** Solution
+[[file:src/resolvers/post.ts::const post = await em.findOne(Post, { id });][await]] is needed before ~em.findOne~
