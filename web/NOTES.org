@@ -1,0 +1,4 @@
+#+title: Note for the Lessons that I get from this Project
+#+author: Reza A'masyi
+#+startup: content
+
