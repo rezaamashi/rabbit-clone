@@ -1,15 +1,30 @@
-#+title: Log files to notes personal errors
+#+title: Note for the Lessons that I get from this Project
 #+author: Reza A'masyi
+#+startup: content
 
-* Problems
+* Redis - session usage
+How ~redis~ works?
 
-* Fixed
-** updatePost
-updatePost command still splits error in typegraphql
-*** Solution
-[[file:src/resolvers/post.ts::const post = await em.findOne(Post, { id });][await]] is needed before ~em.findOne~
-** argon2 - actually import
-*Problem is not in the ~argon2~ module*
-But it was from the auto import of ~lsp~ that direct to ~User~ entity in ~/src/entities/User~
-*** Solution
-[[file:src/resolvers/user.ts::import { User } from "../entities/User";][import]] directory needs to redirected to relative directory ~../entities/User~
+** The function is called 
+~req.session.userId = user.id;~
+
+an object is created ~{ userId: 1 }~ and it is sent to ~-> redis~
+
+** A session key is created within ~redis~
+~sess:lakjdflkaelhalkne~ and it is mapped to object ~{ userId: 1 }~
+
+** Set a cookie within browser
+~express-sessioin~ will set a cookie within user's browser (eg: ~lajfklejlajflahflkahw~)
+
+** User make request
+ the value ~lajfklejlajflahflkahw~ is then sent to -> the server
+
+** Unsignationn of the key - decrypt the cookie 
+within the server ~lajfklejlajflahflkahw~ is being signed by ~secret:...~
+(in this code is within [[file:src/index.ts::secret: "lkafklahdklhlakjfk",][secret]])
+~lajfklejlajflahflkahw =? secret:... -> sess:lakjdflkaelhalkne~
+
+** Redis Request is created
+~sess:lakjdflkaelhalkne -> { userId: 1 }~ 
+it is being stored at
+~req.session = { userId:1 }~
