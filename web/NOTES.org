@@ -2,3 +2,4 @@
 #+author: Reza A'masyi
 #+startup: content
 
+* NavBar doesn't show me query when an user is logged in

@@ -4,9 +4,17 @@
 
 * Problems
 
+
+* Fixed
+
 ** query caching problem 
 ~_return~ expecting ~,~
 
+*** Solution
+needed ~,~ after previous curly bracket ~}~
+could be prevented with prettier formatting
+
 ** ~NavBar~ in ~"/"~ not showing username me query
 
-* Fixed
+** ~logout~ mutation not deleting cache
+

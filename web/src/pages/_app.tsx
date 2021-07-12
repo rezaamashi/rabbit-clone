@@ -1,10 +1,14 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import { cacheExchange, Cache, QueryInput } from "@urql/exchange-graphcache";
 import { createClient, dedupExchange, fetchExchange, Provider } from "urql";
-import { MeDocument, MeQuery } from "../generated/graphql";
-import theme from "../theme";
+import {
+  LoginMutation,
+  MeDocument,
+  MeQuery,
+  RegisterMutation,
+} from "../generated/graphql";
 
-function betterUpdateQuery(
+function betterUpdateQuery<Result, Query>(
   cache: Cache,
   qi: QueryInput,
   result: any,
@@ -25,35 +29,36 @@ const client = createClient({
         Mutation: {
           login: (_result, args, cache, info) => {
             betterUpdateQuery<LoginMutation, MeQuery>(
-	      cache,
-	      { query: MeDocument, }
-	      _result,
+              cache,
+              { query: MeDocument },
+              _result,
               (result, query) => {
-		if (result.login.errors) {
-		  return query;
-		} else {
-		  return {
-		    me: result.login.user,
-		  };
-		}
-	      }
-	    );
+                if (result.login.errors) {
+                  return query;
+                } else {
+                  return {
+                    me: result.login.user,
+                  };
+                }
+              }
+            );
           },
+
           register: (_result, args, cache, info) => {
             betterUpdateQuery<RegisterMutation, MeQuery>(
-	      cache,
-	      { query: MeDocument, }
-	      _result,
+              cache,
+              { query: MeDocument },
+              _result,
               (result, query) => {
-		if (result.register.errors) {
-		  return query;
-		} else {
-		  return {
-		    me: result.register.user,
-		  };
-		}
-	      }
-	    );
+                if (result.register.errors) {
+                  return query;
+                } else {
+                  return {
+                    me: result.register.user,
+                  };
+                }
+              }
+            );
           },
         },
       },
@@ -62,7 +67,7 @@ const client = createClient({
   ],
 });
 
-function MyApp({ Component, pageProps }: any) {
+function MyApp({ Component, pageProps }: any): JSX.Element {
   return (
     <Provider value={client}>
       <ChakraProvider resetCSS theme={theme}>
