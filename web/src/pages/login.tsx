@@ -1,18 +1,14 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Button, Link, Flex } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
+import { withUrqlClient } from "next-urql";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { InputField } from "../components/InputField";
 import { Wrapper } from "../components/Wrapper";
 import { useLoginMutation } from "../generated/graphql";
+import { createUrqlClient } from "../utils/createUrqlClient";
 import { toErrorMap } from "../utils/toErrorMap";
-import { useRouter } from "next/router";
 
 const Login: React.FC<{}> = ({}) => {
   const router = useRouter();
@@ -20,9 +16,9 @@ const Login: React.FC<{}> = ({}) => {
   return (
     <Wrapper variant="small">
       <Formik
-        initialValues={{ username: "", password: "" }}
+        initialValues={{ usernameOrEmail: "", password: "" }}
         onSubmit={async (values, { setErrors }) => {
-          const response = await login({ options: values });
+          const response = await login(values);
           if (response.data?.login.errors) {
             setErrors(toErrorMap(response.data.login.errors));
           } else if (response.data?.login.user) {
@@ -34,9 +30,9 @@ const Login: React.FC<{}> = ({}) => {
         {({ isSubmitting }) => (
           <Form>
             <InputField
-              name="username"
-              placeholder="username"
-              label="Username"
+              name="usernameOrEmail"
+              placeholder="username or email "
+              label="Username Or Email"
             />
             <Box mt={4}>
               <InputField
@@ -46,6 +42,11 @@ const Login: React.FC<{}> = ({}) => {
                 type="password"
               />
             </Box>
+            <Flex mt={2}>
+              <NextLink href="/forgot-password">
+                <Link ml="auto">Forgot Password?</Link>
+              </NextLink>
+            </Flex>
             <Button
               mt={4}
               colorScheme="teal"
@@ -61,4 +62,4 @@ const Login: React.FC<{}> = ({}) => {
   );
 };
 
-export default Login;
+export default withUrqlClient(createUrqlClient)(Login);

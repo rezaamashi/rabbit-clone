@@ -2,7 +2,27 @@
 #+author: Reza A'masyi
 #+startup: content
 
+* Notes
+04:22:34
+05:12:55 - creating forgot password page
+05:50:59 - creating relationship between posts to user (many-to-one)
+
+** Rule on Server Side Rendering
+#+begin_quote
+If you have a query in the page, and it is an important SEO
+#+end_quote
+1. If the page or the content is needs to be found by google, or you need good SEO of the page.
+2. If the data is dynamic
+
 * Problems
+
+** New password on token.tsx
+1. less than 2 character error not showed
+2. token expired error not showed
+
+*** Probable cause
+backend on how the data collected
+frontend on how the data is showed
 
 
 * Fixed
@@ -17,4 +37,6 @@ could be prevented with prettier formatting
 ** ~NavBar~ in ~"/"~ not showing username me query
 
 ** ~logout~ mutation not deleting cache
+
+* 
 

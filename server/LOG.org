@@ -2,20 +2,38 @@
 #+author: Reza A'masyi
 #+startup: content
 
+* Notes
+
+
 * Problems
 
+** 42P07 - relation email unique already exists 
+
+*** Solution
+1. Stop ~yarn watch~ and ~yarn dev~ ,
+2. delete ~dist/~ and ~migrations/~,
+3. Drop =rebbit= database
+3. then redo ~yarn create:migration~
+4. recreate ~dist/~ through ~yarn watch~
+
 * Fixed
+
 ** updatePost
 updatePost command still splits error in typegraphql
+
 *** Solution
 [[file:src/resolvers/post.ts::const post = await em.findOne(Post, { id });][await]] is needed before ~em.findOne~
+
 ** argon2 - actually import
 *Problem is not in the ~argon2~ module*
 But it was from the auto import of ~lsp~ that direct to ~User~ entity in ~/src/entities/User~
+
 *** Solution
 [[file:src/resolvers/user.ts::import { User } from "../entities/User";][import]] directory needs to redirected to relative directory ~../entities/User~
+
 ** redis - in runit
 within the ~run~ file that provided by runit-init system ~redis~ is defaulted to look for ~redis.conf~ in ~/etc/redis/~. while the installation placed it in ~/etc/redis.conf~
+
 *** Solution
 either
 1. Move ~redis.conf~ to (mkdir) ~/etc/redis/~
