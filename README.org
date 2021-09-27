@@ -1,0 +1,38 @@
+#+TITLE: Rabbit Clone \mdash A Personal Full-Stack Project
+#+AUTHOR: Reza A'masyi
+#+EMAIL: mnurrreza@gmail.com
+#+DATE: Monday, 27 September 2021
+
+This project is inspired by [[https://github.com/benawad][Ben Awad]]'s lireddit project. Check out the [[https://github.com/rezaamashi/lireddit][Fork]], and his complete [[https://youtu.be/I6ypD7qv3Z8][Video Tutorial on Youtube]].
+
+* Overview
+Rabbit-Clone is a personal fullstack web development project that attempt to clone the social media website [[https://reddit.com][Reddit]]. It is written in Typescript. The bare functionality to allow user to register, login, executing CRUDs on posts, and ability to vote for posts.
+
+** Features
+Users can:
+- Register/Create an account
+- Login to a created account
+- Request for Password Change Token (In case of forgotten password)
+- Manipulating User's own Posts (CRUD)
+- Vote publicly posted posts by another Users
+
+* List of Libraries Used
+- React
+- Next.js
+- Typescript
+- GraphQL
+- TypeGraphQL
+- URQl/Apollo
+- Node.js
+- MikroORM/TypeORM
+
+* List of Tools Used
+- PostgreSQL
+- Redis
+- Docker
+- Emacs + LSP-mode
+
+* :pencil: Todos
+- [ ] Clean up the commit history
+- [ ] Set up =prod= build
+- [ ] Build proper Docker image

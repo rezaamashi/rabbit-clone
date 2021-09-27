@@ -1,3 +1,0 @@
-#+title: Personal Full-Stack Project
-
-This project is inspired by @BenAwad lireddit project

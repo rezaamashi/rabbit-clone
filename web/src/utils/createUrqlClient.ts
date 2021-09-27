@@ -1,18 +1,18 @@
-import { dedupExchange, fetchExchange } from "urql";
-import { cacheExchange } from "@urql/exchange-graphcache";
+import { dedupExchange, fetchExchange } from 'urql';
+import { cacheExchange } from '@urql/exchange-graphcache';
 import {
   LogoutMutation,
   MeQuery,
   MeDocument,
   LoginMutation,
   RegisterMutation,
-} from "../generated/graphql";
-import { betterUpdateQuery } from "./betterUpdateQuery";
+} from '../generated/graphql';
+import { betterUpdateQuery } from './betterUpdateQuery';
 
 export const createUrqlClient = (ssrExchange: any) => ({
-  url: "http://localhost:5000/graphql",
+  url: 'http://localhost:5001/graphql',
   fetchOptions: {
-    credentials: "include" as const,
+    credentials: 'include' as const,
   },
   exchanges: [
     dedupExchange,

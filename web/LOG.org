@@ -1,11 +1,12 @@
-#+title: Log files to notes personal errors
-#+author: Reza A'masyi
-#+startup: content
+#+TITLE: Log files to notes personal errors
+#+AUTHOR: Reza A'masyi
+#+STARTUP: content
 
 * Notes
 04:22:34
 05:12:55 - creating forgot password page
 05:50:59 - creating relationship between posts to user (many-to-one)
+06:06:41
 
 ** Rule on Server Side Rendering
 #+begin_quote
@@ -13,6 +14,9 @@ If you have a query in the page, and it is an important SEO
 #+end_quote
 1. If the page or the content is needs to be found by google, or you need good SEO of the page.
 2. If the data is dynamic
+
+** Starting using docker for development
+Now I am using docker volume to run postgresql and redis container
 
 * Problems
 
@@ -36,7 +40,11 @@ could be prevented with prettier formatting
 
 ** ~NavBar~ in ~"/"~ not showing username me query
 
+*** Black box
+
 ** ~logout~ mutation not deleting cache
+
+*** Black box
 
 * 
 

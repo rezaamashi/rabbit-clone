@@ -1,20 +1,11 @@
-#+title: Log files to notes personal errors
-#+author: Reza A'masyi
-#+startup: content
+#+TITLE: Log files to notes personal errors
+#+AUTHOR: Reza A'masyi
+#+STARTUP: content
 
 * Notes
 
 
 * Problems
-
-** 42P07 - relation email unique already exists 
-
-*** Solution
-1. Stop ~yarn watch~ and ~yarn dev~ ,
-2. delete ~dist/~ and ~migrations/~,
-3. Drop =rebbit= database
-3. then redo ~yarn create:migration~
-4. recreate ~dist/~ through ~yarn watch~
 
 * Fixed
 
@@ -38,3 +29,12 @@ within the ~run~ file that provided by runit-init system ~redis~ is defaulted to
 either
 1. Move ~redis.conf~ to (mkdir) ~/etc/redis/~
 2. Redirect within ~run~ file to ~/etc/redis.conf~
+
+** 42P07 - relation email unique already exists
+
+*** Solution
+1. Stop ~yarn watch~ and ~yarn dev~ ,
+2. delete ~dist/~ and ~migrations/~,
+3. Drop =rebbit= database
+3. then redo ~yarn create:migration~
+4. recreate ~dist/~ through ~yarn watch~
